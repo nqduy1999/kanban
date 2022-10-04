@@ -1,17 +1,6 @@
-import React, { FC } from "react";
+import React from "react";
 
-export interface IInput {
-  className?: string;
-  type?: string;
-  placeholder: string;
-  onChange?: any;
-  name?: string | any;
-  id?: string;
-  disabled?: boolean;
-  value?: string | number;
-}
-
-const BackgroundLight: FC<IInput> = () => {
+const BackgroundLight = () => {
   return (
     <svg
       width="1366"
