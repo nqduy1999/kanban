@@ -11,12 +11,11 @@ const FormLayout: FC<IFormLayout> = ({ title, children }) => {
   return (
     <div className="pt-6 mt-20">
       <div className="flex justify-center items-center">
-        <Image
-          className="lg:block hidden object-cover  rounded-l-lg border border-white dark:border-gray-800"
+        <img
+          className="lg:block hidden w-[28rem] object-cover h-[26.6875rem] rounded-l-lg border border-white dark:border-gray-800"
           src={image.background}
           alt=""
-          height="26.6875rem"
-          width="28rem"
+          loading="lazy"
         />
         <div className="w-full bg-white rounded-lg lg:rounded-l-none sm:m-0 m-4 shadow md:mt-0 max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

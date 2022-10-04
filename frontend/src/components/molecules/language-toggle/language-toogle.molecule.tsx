@@ -31,8 +31,8 @@ const LanguageToogle = () => {
         <Image
           src={languages[locale as string].flag}
           className="w-5 h-5 rounded-full"
-          width="1.25rem"
-          height="1.25rem"
+          width="20"
+          height="20"
         />
         <span>{languages[locale as string].name}</span>
       </Button>
