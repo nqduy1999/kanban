@@ -1,10 +1,10 @@
 import { Meta } from "@/components/organisms";
 import { AuthLayout } from "@/components/templates";
+import Image from "next/image";
 
 const meta = {
   title: "Home - Kanban",
-  description:
-    "Homepage",
+  description: "Homepage",
 };
 
 const HomePage = () => (
@@ -13,7 +13,7 @@ const HomePage = () => (
       <div className="flex justify-center items-center flex-col ">
         <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mt-10 transition duration-300">
           <a href="#">
-            <img
+            <Image
               className="rounded-t-lg "
               src="https://source.unsplash.com/random/1920x1080/?laptop"
               alt=""

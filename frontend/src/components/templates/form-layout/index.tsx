@@ -1,4 +1,5 @@
 import { image } from "@/commons/images";
+import Image from "next/image";
 import React, { FC, ReactNode } from "react";
 
 interface IFormLayout {
@@ -10,7 +11,7 @@ const FormLayout: FC<IFormLayout> = ({ title, children }) => {
   return (
     <div className="pt-6 mt-20">
       <div className="flex justify-center items-center">
-        <img
+        <Image
           className="lg:block hidden w-[28rem] object-cover h-[26.6875rem] rounded-l-lg border border-white dark:border-gray-800"
           src={image.background}
           alt=""

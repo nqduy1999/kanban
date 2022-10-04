@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
 import { image } from "@/commons/images";
+import Image from "next/image";
 
 const languages: Record<string, any> = {
   vi: {
@@ -27,7 +28,7 @@ const LanguageToogle = () => {
         type="button"
         data-dropdown-toggle="language-dropdown-menu"
       >
-        <img
+        <Image
           src={languages[locale as string].flag}
           className="w-5 h-5 rounded-full"
         />
