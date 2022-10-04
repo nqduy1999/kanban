@@ -1,5 +1,4 @@
 import { image } from "@/commons/images";
-import Image from "next/image";
 import React, { FC, ReactNode } from "react";
 
 interface IFormLayout {
