@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
 import { image } from "@/commons/images";
@@ -16,11 +15,8 @@ const languages: Record<string, any> = {
 };
 
 const LanguageToogle = () => {
-  const [mounted, setMounted] = useState(false);
   const { locale } = useRouter();
 
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
   return (
     <>
       <Button
@@ -36,26 +32,25 @@ const LanguageToogle = () => {
         />
         <span>{languages[locale as string].name}</span>
       </Button>
-      <div
+      {/* <div
         className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
         id="language-dropdown-menu"
       >
         <ul className="py-1" role="none">
           {Object.keys(languages).map((item, key) => (
             <li key={key}>
-              <a
-                href="#"
+              <p
                 className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 role="menuitem"
               >
                 <div className="inline-flex items-center">
                   {languages[item].name}
                 </div>
-              </a>
+              </p>
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };
