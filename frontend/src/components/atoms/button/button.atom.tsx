@@ -7,6 +7,7 @@ export interface IButton {
   onClick?: any;
   type?: "button" | "submit";
   id?: string;
+  loading?: boolean;
 }
 
 const Button: FC<IButton> = ({
@@ -14,10 +15,12 @@ const Button: FC<IButton> = ({
   ariaLabel,
   onClick,
   children,
+  loading,
   ...rest
 }) => {
   return (
     <button
+      disabled={loading}
       className={className}
       aria-label={ariaLabel}
       onClick={onClick}
