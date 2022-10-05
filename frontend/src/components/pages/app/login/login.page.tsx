@@ -1,16 +1,18 @@
+import { IPostLogin } from "@/commons/constants/api-resquest";
 import { LoginForm } from "@/components/organisms/form";
 import { BaseLayout, FormLayout } from "@/components/templates";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useLogin } from "./hooks/useLogin";
 
 const LoginPage = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { locale } = useRouter();
 
   console.log(locale, "locale");
 
-  const onSubmit = () => {
-    setIsLoading(!isLoading);
+  const { mutate, isLoading } = useLogin();
+
+  const onSubmit = (value: IPostLogin) => {
+    mutate(value);
   };
 
   return (

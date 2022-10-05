@@ -26,7 +26,7 @@ const LoadingEffect = () => (
 
 const LoadingButton: FC<ILoadingButton> = ({ loading, children, ...rest }) => {
   return (
-    <Button {...rest}>
+    <Button {...rest} loading={loading}>
       {loading && <LoadingEffect />}
       {children}
     </Button>

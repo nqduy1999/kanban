@@ -56,8 +56,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="13.307"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1724C9" />
-            <stop offset="1" stop-color="#1C64F2" />
+            <stop stopColor="#1724C9" />
+            <stop offset="1" stopColor="#1C64F2" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_2484_3243"
@@ -67,8 +67,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="2.64962"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1C64F2" />
-            <stop offset="1" stop-color="#0092FF" />
+            <stop stopColor="#1C64F2" />
+            <stop offset="1" stopColor="#0092FF" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_2484_3243"
@@ -78,8 +78,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="6.3104"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0092FF" />
-            <stop offset="1" stop-color="#45B2FF" />
+            <stop stopColor="#0092FF" />
+            <stop offset="1" stopColor="#45B2FF" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_2484_3243"
@@ -89,8 +89,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="26.1359"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1C64F2" />
-            <stop offset="1" stop-color="#0092FF" />
+            <stop stopColor="#1C64F2" />
+            <stop offset="1" stopColor="#0092FF" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_2484_3243"
@@ -100,8 +100,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="24.4347"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1724C9" />
-            <stop offset="1" stop-color="#1C64F2" />
+            <stop stopColor="#1724C9" />
+            <stop offset="1" stopColor="#1C64F2" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_2484_3243"
@@ -111,8 +111,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="10.9345"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0092FF" />
-            <stop offset="1" stop-color="#45B2FF" />
+            <stop stopColor="#0092FF" />
+            <stop offset="1" stopColor="#45B2FF" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_2484_3243"
@@ -122,8 +122,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="20.8063"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1C64F2" />
-            <stop offset="1" stop-color="#0092FF" />
+            <stop stopColor="#1C64F2" />
+            <stop offset="1" stopColor="#0092FF" />
           </linearGradient>
           <linearGradient
             id="paint7_linear_2484_3243"
@@ -133,8 +133,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="11.8044"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#1724C9" />
-            <stop offset="1" stop-color="#1C64F2" />
+            <stop stopColor="#1724C9" />
+            <stop offset="1" stopColor="#1C64F2" />
           </linearGradient>
           <linearGradient
             id="paint8_linear_2484_3243"
@@ -144,8 +144,8 @@ export const IconHome: FC<IIcon> = ({ className }) => {
             y2="32.2745"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0092FF" />
-            <stop offset="1" stop-color="#45B2FF" />
+            <stop stopColor="#0092FF" />
+            <stop offset="1" stopColor="#45B2FF" />
           </linearGradient>
         </defs>
       </svg>
