@@ -28,7 +28,7 @@ export const RegisterFormContent = () => {
         label="Confirm Password"
         name="confirmPassword"
         id="confirmPassword"
-        placeholder="Input password"
+        placeholder="Input confirm password"
         type="password"
       />
       <FormRemember />

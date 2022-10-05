@@ -1,20 +1,25 @@
+import { IPostRegister } from "@/commons/constants/api-resquest";
 import { RegisterForm } from "@/components/organisms/form";
 import { BaseLayout, FormLayout } from "@/components/templates";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRegister } from "./hooks/useRegister";
 
 const RegisterPage = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { locale } = useRouter();
 
   console.log(locale, "locale");
+  const { mutate, isLoading } = useRegister();
 
-  const onSubmit = () => {
-    setIsLoading(!isLoading);
+  const onSubmit = (value: IPostRegister) => {
+    mutate(value);
   };
+
   return (
     <BaseLayout>
-      <FormLayout title="Login" subtitle="Input username and password to login">
+      <FormLayout
+        title="Register"
+        subtitle="Input username and password to register"
+      >
         <RegisterForm isLoading={isLoading} onSubmit={onSubmit} />
       </FormLayout>
     </BaseLayout>
