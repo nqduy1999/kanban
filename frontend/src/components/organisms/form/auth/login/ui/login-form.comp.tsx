@@ -25,7 +25,6 @@ export const LoginForm: FC<ILoginForm> = ({ onSubmit, isLoading }) => {
       initialValues={{
         username: "",
         password: "",
-        confirmPassword: "",
       }}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
