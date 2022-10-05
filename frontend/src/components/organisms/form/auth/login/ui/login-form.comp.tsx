@@ -8,6 +8,7 @@ import {
   passwordValidationSchema,
   usernameValidationSchema,
 } from "../../schema/auth.schema";
+import { NextLink } from "@/components/molecules/link/link.molecule";
 
 const validationSchema = Yup.object({
   username: usernameValidationSchema,
@@ -41,12 +42,12 @@ export const LoginForm: FC<ILoginForm> = ({ onSubmit, isLoading }) => {
           </LoadingButton>
           <p className="mt-4 text-sm font-light text-gray-500 dark:text-gray-400">
             Don’t have an account yet?{" "}
-            <a
-              href="#"
+            <NextLink
+              href="/register"
               className="font-medium text-primary-600 hover:underline dark:text-primary-500"
             >
               Register
-            </a>
+            </NextLink>
           </p>
         </LoginFormProvider>
       </Form>
