@@ -14,12 +14,12 @@ const validationSchema = Yup.object({
   password: passwordValidationSchema,
 });
 
-interface ILoginForm {
+interface IRegisterForm {
   onSubmit: any;
   isLoading: boolean;
 }
 
-export const LoginForm: FC<ILoginForm> = ({ onSubmit, isLoading }) => {
+export const RegisterForm: FC<IRegisterForm> = ({ onSubmit, isLoading }) => {
   return (
     <Formik
       initialValues={{
