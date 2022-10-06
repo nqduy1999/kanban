@@ -39,9 +39,7 @@ export default class HttpCommon {
 
   static responseHandler = async (resp: JSONObject): Promise<JSONObject | Error> => {
     const result = _.get(resp, 'data', {});
-    if (result?.err_code !== 0) {
-      throw new Error(JSON.stringify(result));
-    } return result;
+    return result;
   };
 
   static Get = async (url: string, params?: any): Promise<JSONObject | Error> => {
