@@ -1,4 +1,4 @@
-import { IPostLogin } from "@/commons/constants/api-resquest";
+import { IPostLogin } from "@/commons/constants/api-request";
 import { LoginForm } from "@/components/organisms/form";
 import { BaseLayout, FormLayout } from "@/components/templates";
 import { useRouter } from "next/router";
