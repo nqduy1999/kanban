@@ -35,7 +35,7 @@ export const RegisterForm: FC<IRegisterForm> = ({ onSubmit, isLoading }) => {
         <RegisterFormProvider>
           <RegisterFormContent />
           <LoadingButton
-            className="mt-4 w-full text-white bg-primary-700 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="mt-6 w-full text-white bg-primary-700 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             loading={isLoading}
             type="submit"
           >
@@ -43,7 +43,7 @@ export const RegisterForm: FC<IRegisterForm> = ({ onSubmit, isLoading }) => {
           </LoadingButton>
           <NextLink
             href="/login"
-            className="mt-4 text-sm font-light text-gray-500 dark:text-gray-400"
+            className="font-medium text-primary-600 mt-4 text-sm font-light text-gray-500 dark:text-gray-400 block"
           >
             Back to login
           </NextLink>

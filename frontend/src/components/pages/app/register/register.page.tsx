@@ -1,4 +1,4 @@
-import { IPostRegister } from "@/commons/constants/api-resquest";
+import { IPostRegister } from "@/commons/constants/api-request";
 import { RegisterForm } from "@/components/organisms/form";
 import { BaseLayout, FormLayout } from "@/components/templates";
 import { useRouter } from "next/router";
