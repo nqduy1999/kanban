@@ -5,6 +5,7 @@ import { RegisterFormProvider } from "./register-form.provider";
 import { LoadingButton } from "@/components/molecules";
 import { RegisterFormContent } from "./register-form.content";
 import {
+  confirmPasswordValidationSchema,
   passwordValidationSchema,
   usernameValidationSchema,
 } from "../../schema/auth.schema";
@@ -13,6 +14,7 @@ import { NextLink } from "@/components/molecules/link/link.molecule";
 const validationSchema = Yup.object({
   username: usernameValidationSchema,
   password: passwordValidationSchema,
+  confirmPassword: confirmPasswordValidationSchema,
 });
 
 interface IRegisterForm {

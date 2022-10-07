@@ -2,8 +2,11 @@ import { IInput, Input } from "@/components/atoms";
 import { FieldMetaProps } from "formik";
 import { FC } from "react";
 
+interface IMetaCustom extends FieldMetaProps<any> {
+  errorMsg?: string;
+}
 export interface IFormInput extends IInput {
-  meta: FieldMetaProps<any>;
+  meta: IMetaCustom;
   label: string;
   classLabel?: string;
   wrapperClassName?: string;
@@ -18,6 +21,8 @@ const FormInput: FC<IFormInput> = ({
   wrapperClassName,
   ...rest
 }) => {
+  console.log(meta, "errors.length > 0");
+
   return (
     <div className={`w-full flex flex-col ${wrapperClassName ?? ""}`}>
       {label && (
@@ -28,9 +33,9 @@ const FormInput: FC<IFormInput> = ({
       <div className="relative w-full">
         <Input id={id} {...rest} type={type} />
       </div>
-      {meta.touched && meta.error && (
+      {((meta.touched && meta.error) || meta.errorMsg) && (
         <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-          {meta.error}
+          {meta.error || meta.errorMsg}
         </span>
       )}
     </div>

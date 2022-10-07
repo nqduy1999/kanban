@@ -6,18 +6,18 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import { useMutation } from "react-query";
 const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [field, meta] = useField({ name: "username", type: "text" });
-  const [isExisted, setIsExisted] = useState<boolean>(false);
   const [debonceText, setDebounceText] = useState<string>();
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState<string>("");
 
-  console.log(errors, "errors");
+  console.log(errors.length, "errors");
 
   const { mutate, isLoading } = useMutation(checkingUserName, {
     onSuccess: (res) => {
+      setErrors("");
       console.log(res, "response");
     },
     onError: (error: any) => {
-      setErrors(error);
+      setErrors(error.response.data.msg);
     },
   });
 
@@ -25,7 +25,7 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
     setDebounceText(value);
   };
 
-  const debounceFn = useCallback(_.debounce(onChange, 1000), []);
+  const debounceFn = useCallback(_.debounce(onChange, 200), []);
 
   useEffect(() => {
     if (debonceText) {
@@ -35,14 +35,14 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
 
   return (
     <FormInput
-      meta={meta}
+      meta={errors.length > 0 ? { ...meta, errorMsg: errors } : meta}
       name={field.name}
       value={field.value}
       placeholder="Input username"
       label="Username"
       classLabel="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
       className={`leading-none w-full text-gray-900 dark:text-gray-50 p-3 focus:outline-none ${
-        meta.touched && meta.error
+        (meta.touched && meta.error) || errors.length > 0
           ? "border-rose-500"
           : "border-gray-400 dark:border-gray-600"
       } mt-2 border-2 dark:bg-gray-600 rounded-lg bg-white`}
