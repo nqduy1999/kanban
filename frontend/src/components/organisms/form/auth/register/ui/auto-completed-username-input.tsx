@@ -13,7 +13,7 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const { mutate } = useMutation(checkingUserName, {
+  const { mutate, isLoading } = useMutation(checkingUserName, {
     onSuccess: (res) => {
       setErrors("");
       setIsValid(true);
@@ -38,9 +38,12 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
     }
   }, [debonceText]);
 
+  console.log(isLoading, "isLoading");
+
   const renderSuffix = () => {
-    if (loading) return <IconLoading />;
-    if (!loading && !meta.error && isValid) return <IconChecking />;
+    if (loading || isLoading) return <IconLoading />;
+    if (!isLoading && !loading && !meta.error && isValid)
+      return <IconChecking />;
     return null;
   };
   return (
