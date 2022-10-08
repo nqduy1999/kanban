@@ -21,6 +21,8 @@ const FormInput: FC<IFormInput> = ({
   wrapperClassName,
   ...rest
 }) => {
+  console.log(meta, "meta");
+
   return (
     <div className={`w-full flex flex-col ${wrapperClassName ?? ""}`}>
       {label && (

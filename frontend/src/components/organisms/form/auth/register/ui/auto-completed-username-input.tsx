@@ -38,6 +38,11 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
     }
   }, [debonceText]);
 
+  const renderSuffix = () => {
+    if (loading) return <IconLoading />;
+    if (!loading && !meta.error && isValid) return <IconChecking />;
+    return null;
+  };
   return (
     <FormInput
       meta={errors.length > 0 ? { ...meta, errorMsg: errors } : meta}
@@ -56,10 +61,7 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
         debounceFn(e.target.value);
         return field.onChange(e);
       }}
-      suffix={
-        (loading && <IconLoading />) ||
-        (!meta.error && isValid && <IconChecking />)
-      }
+      suffix={renderSuffix()}
       type={"text"}
       {...rest}
     />
