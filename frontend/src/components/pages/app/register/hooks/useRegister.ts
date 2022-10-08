@@ -1,9 +1,9 @@
-import { postLogin } from "@/commons/services";
+import { postRegister } from "@/commons/services";
 import { useMutation } from "react-query"
 
-export const useLogin = () => {
+export const useRegister = () => {
 
-  return useMutation(postLogin, {
+  return useMutation(postRegister, {
     onSuccess: (res) => {
       console.log(res, 'res');
     },

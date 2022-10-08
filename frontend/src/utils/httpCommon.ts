@@ -9,9 +9,6 @@ import {
 import { JSONObject } from '@/types';
 
 
-
-console.log(process.env.BASE_URL, 'process.env.BASE_URL');
-
 export default class HttpCommon {
   static axiosInstance = axios.create({
     baseURL: process.env.BASE_URL,
@@ -39,9 +36,7 @@ export default class HttpCommon {
 
   static responseHandler = async (resp: JSONObject): Promise<JSONObject | Error> => {
     const result = _.get(resp, 'data', {});
-    if (result?.err_code !== 0) {
-      throw new Error(JSON.stringify(result));
-    } return result;
+    return result;
   };
 
   static Get = async (url: string, params?: any): Promise<JSONObject | Error> => {

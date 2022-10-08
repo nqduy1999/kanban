@@ -8,3 +8,7 @@ export type IPostRegister = {
   password: string,
   confirmPassword: string
 }
+
+export type ICheckingUsername = {
+  username: string
+}

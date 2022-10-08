@@ -1,6 +1,6 @@
 import HttpCommon from "@/utils/httpCommon"
-import { API_GET_ANYTHING, API_LOGIN, API_REGISTER } from "../constants/api";
-import { IPostLogin, IPostRegister } from "../constants/api-resquest";
+import { API_CHECKING_USERNAME, API_GET_ANYTHING, API_LOGIN, API_REGISTER } from "../constants/api";
+import { ICheckingUsername, IPostLogin, IPostRegister } from "../constants/api-request";
 
 const getAnything = async () => {
   const response = await HttpCommon.Get(API_GET_ANYTHING);
@@ -17,8 +17,14 @@ const postRegister = async (data: IPostRegister) => {
   return response
 }
 
+const checkingUserName = async (data: ICheckingUsername) => {
+  const response = await HttpCommon.Post(API_CHECKING_USERNAME, data);
+  return response
+}
+
 export {
   getAnything,
   postLogin,
-  postRegister
+  postRegister,
+  checkingUserName
 }
