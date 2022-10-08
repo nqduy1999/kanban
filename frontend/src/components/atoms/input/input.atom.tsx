@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 export interface IInput {
   className?: string;
@@ -9,13 +9,22 @@ export interface IInput {
   id?: string;
   disabled?: boolean;
   value?: string | number;
+  suffix?: ReactNode;
+  prefix?: ReactNode;
 }
 
-const Input: FC<IInput> = ({ className, type, ...rest }) => {
+const Input: FC<IInput> = ({ suffix, prefix, className, type, ...rest }) => {
   return (
-    <>
-      <input className={className} type={type} aria-label={type} {...rest} />
-    </>
+    <div className={className + " flex"}>
+      {prefix}
+      <input
+        className="w-full bg-transparent focus:outline-none"
+        type={type}
+        aria-label={type}
+        {...rest}
+      />
+      {suffix}
+    </div>
   );
 };
 

@@ -1,31 +1,36 @@
 import { checkingUserName } from "@/commons/services";
+import { IconChecking, IconLoading } from "@/components/atoms/svg";
 import { FormInput } from "@/components/molecules";
 import { useField } from "formik";
 import _ from "lodash";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useMutation } from "react-query";
+
 const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [field, meta] = useField({ name: "username", type: "text" });
   const [debonceText, setDebounceText] = useState<string>();
   const [errors, setErrors] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isValid, setIsValid] = useState<boolean>(false);
 
-  console.log(errors.length, "errors");
-
-  const { mutate, isLoading } = useMutation(checkingUserName, {
+  const { mutate } = useMutation(checkingUserName, {
     onSuccess: (res) => {
       setErrors("");
+      setIsValid(true);
       console.log(res, "response");
     },
     onError: (error: any) => {
+      setIsValid(false);
       setErrors(error.response.data.msg);
     },
   });
 
   const onChange = (value: string) => {
+    setLoading(false);
     setDebounceText(value);
   };
 
-  const debounceFn = useCallback(_.debounce(onChange, 200), []);
+  const debounceFn = useCallback(_.debounce(onChange, 500), []);
 
   useEffect(() => {
     if (debonceText) {
@@ -45,11 +50,16 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
         (meta.touched && meta.error) || errors.length > 0
           ? "border-rose-500"
           : "border-gray-400 dark:border-gray-600"
-      } mt-2 border-2 dark:bg-gray-600 rounded-lg bg-white`}
+      } mt-2 border-2 dark:bg-gray-600 rounded-lg bg-white h-12`}
       onChange={(e: any) => {
+        setLoading(true);
         debounceFn(e.target.value);
         return field.onChange(e);
       }}
+      suffix={
+        (loading && <IconLoading />) ||
+        (!meta.error && isValid && <IconChecking />)
+      }
       type={"text"}
       {...rest}
     />

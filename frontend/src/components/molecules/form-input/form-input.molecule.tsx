@@ -21,8 +21,6 @@ const FormInput: FC<IFormInput> = ({
   wrapperClassName,
   ...rest
 }) => {
-  console.log(meta, "errors.length > 0");
-
   return (
     <div className={`w-full flex flex-col ${wrapperClassName ?? ""}`}>
       {label && (
@@ -46,6 +44,6 @@ FormInput.defaultProps = {
   classLabel:
     "font-semibold text-sm leading-none text-gray-900 dark:text-white ",
   className:
-    "leading-none w-full text-gray-900 dark:text-gray-50 p-3 focus:outline-none border-gray-400 dark:border-gray-600 mt-2 border-2 dark:bg-gray-600 rounded bg-white",
+    "leading-none w-full text-gray-900 dark:text-gray-50 p-3 border-gray-400 dark:border-gray-600 mt-2 border-2 dark:bg-gray-600 rounded bg-white h-12",
 };
 export { FormInput };

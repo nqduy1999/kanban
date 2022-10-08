@@ -7,8 +7,6 @@ import { useLogin } from "./hooks/useLogin";
 const LoginPage = () => {
   const { locale } = useRouter();
 
-  console.log(locale, "locale");
-
   const { mutate, isLoading } = useLogin();
 
   const onSubmit = (value: IPostLogin) => {

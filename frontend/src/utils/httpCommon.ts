@@ -9,9 +9,6 @@ import {
 import { JSONObject } from '@/types';
 
 
-
-console.log(process.env.BASE_URL, 'process.env.BASE_URL');
-
 export default class HttpCommon {
   static axiosInstance = axios.create({
     baseURL: process.env.BASE_URL,

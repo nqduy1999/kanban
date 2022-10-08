@@ -7,7 +7,6 @@ import { useRegister } from "./hooks/useRegister";
 const RegisterPage = () => {
   const { locale } = useRouter();
 
-  console.log(locale, "locale");
   const { mutate, isLoading } = useRegister();
 
   const onSubmit = (value: IPostRegister) => {
