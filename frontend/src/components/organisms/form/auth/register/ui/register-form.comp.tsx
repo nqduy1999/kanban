@@ -45,7 +45,7 @@ export const RegisterForm: FC<IRegisterForm> = ({ onSubmit, isLoading }) => {
           </LoadingButton>
           <NextLink
             href="/login"
-            className="font-medium text-primary-600 mt-4 text-sm font-light text-gray-500 dark:text-gray-400 block"
+            className="font-bold dark:text-primary-600 mt-4 text-sm font-light text-gray-600 text-gray-400 block"
           >
             Back to login
           </NextLink>
