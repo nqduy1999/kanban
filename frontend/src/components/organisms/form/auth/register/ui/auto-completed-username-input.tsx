@@ -1,10 +1,11 @@
-import { checkingUserName } from "@/commons/services";
-import { IconChecking, IconLoading } from "@/components/atoms/svg";
+import { checkingUserName } from "@/services";
+import { IconLoading } from "@/components/atoms/svg";
 import { FormInput } from "@/components/molecules";
 import { useField } from "formik";
 import _ from "lodash";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useMutation } from "react-query";
+import { CheckIcon } from "@heroicons/react/outline";
 
 const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [field, meta] = useField({ name: "username", type: "text" });
@@ -42,8 +43,7 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
 
   const renderSuffix = () => {
     if (loading || isLoading) return <IconLoading />;
-    if (!isLoading && !loading && !meta.error && isValid)
-      return <IconChecking />;
+    if (!isLoading && !loading && !meta.error && isValid) return <CheckIcon />;
     return null;
   };
   return (

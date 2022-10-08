@@ -10,7 +10,6 @@ const LoginPage = () => {
   console.log(locale, "locale");
 
   const { mutate, isLoading } = useLogin();
-
   const onSubmit = (value: IPostLogin) => {
     mutate(value);
   };

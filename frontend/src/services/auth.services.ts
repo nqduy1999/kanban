@@ -1,6 +1,6 @@
 import HttpCommon from "@/utils/httpCommon"
-import { API_CHECKING_USERNAME, API_GET_ANYTHING, API_LOGIN, API_REGISTER } from "../constants/api";
-import { ICheckingUsername, IPostLogin, IPostRegister } from "../constants/api-request";
+import { API_CHECKING_USERNAME, API_GET_ANYTHING, API_LOGIN, API_REGISTER } from "@/commons/constants/api";
+import { ICheckingUsername, IPostLogin, IPostRegister } from "@/commons/constants/api-request";
 
 const getAnything = async () => {
   const response = await HttpCommon.Get(API_GET_ANYTHING);

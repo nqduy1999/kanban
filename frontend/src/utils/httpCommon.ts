@@ -6,7 +6,7 @@ import {
   getAccessToken,
 } from './auth';
 
-import { JSONObject } from '@/types';
+import { JSONObject } from '@/commons/types';
 
 
 export default class HttpCommon {
