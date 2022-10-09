@@ -4,11 +4,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import type { AppProps } from "next/app";
 import React from "react";
+import { Toaster } from "react-hot-toast";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = React.useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster />
       <ThemeProvider enableSystem={true} attribute="class">
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen={false} />

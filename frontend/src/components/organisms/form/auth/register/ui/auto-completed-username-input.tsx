@@ -6,6 +6,7 @@ import _ from "lodash";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { CheckIcon } from "@heroicons/react/outline";
+import { notify } from "@/components/atoms";
 
 const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [field, meta] = useField({ name: "username", type: "text" });
@@ -18,7 +19,8 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
     onSuccess: (res) => {
       setErrors("");
       setIsValid(true);
-      console.log(res, "response");
+      notify("success", "top-right", "Username can be use");
+      console.log(res, "res");
     },
     onError: (error: any) => {
       setIsValid(false);
@@ -38,8 +40,6 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
       mutate({ username: debonceText });
     }
   }, [debonceText]);
-
-  console.log(isLoading, "isLoading");
 
   const renderSuffix = () => {
     if (loading || isLoading) return <IconLoading />;
