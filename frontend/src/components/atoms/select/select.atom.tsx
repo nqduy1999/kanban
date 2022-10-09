@@ -1,6 +1,5 @@
 import { Listbox, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import { CheckIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, CheckIcon } from "@heroicons/react/outline";
 import { FC, Fragment, useState } from "react";
 
 interface ISelectItems {
