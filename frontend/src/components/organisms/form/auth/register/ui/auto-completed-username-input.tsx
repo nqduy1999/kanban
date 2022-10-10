@@ -6,7 +6,6 @@ import _ from "lodash";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { CheckIcon } from "@heroicons/react/outline";
-import { notify } from "@/components/atoms";
 
 const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [field, meta] = useField({ name: "username", type: "text" });
@@ -16,15 +15,14 @@ const AutoCompletedUsername: FC<any> = ({ rest }) => {
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const { mutate, isLoading } = useMutation(checkingUserName, {
-    onSuccess: (res) => {
+    onSuccess: () => {
       setErrors("");
       setIsValid(true);
-      notify("success", "top-right", "Username can be use");
-      console.log(res, "res");
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
+      const err = JSON.parse(error.message);
+      setErrors(err?.msg);
       setIsValid(false);
-      setErrors(error.response.data.msg);
     },
   });
 
