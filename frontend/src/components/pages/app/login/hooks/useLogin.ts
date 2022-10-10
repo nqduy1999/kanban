@@ -5,9 +5,7 @@ import { useMutation } from "react-query"
 export const useLogin = () => {
   return useMutation(postLogin, {
     onSuccess: (res) => {
-      console.log(res, 'res login');
-      setAccessToken("")
-
+      setAccessToken(res.data.token)
     },
     onError: (err) => {
       console.log(err, 'err');
