@@ -54,5 +54,6 @@ export const notify = (
     {
       id: "unique-notification",
       position: position,
+      duration: 1500,
     }
   );
