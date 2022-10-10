@@ -12,3 +12,13 @@ export type IPostRegister = {
 export type ICheckingUsername = {
   username: string
 }
+
+export type IResponse = {
+  err_code: number,
+  data: Record<string, unknown>,
+  msg: string;
+}
+
+export type IError = {
+  response: Record<string, unknown>
+}
