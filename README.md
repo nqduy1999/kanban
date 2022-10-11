@@ -7,7 +7,8 @@
 * [Git](https://git-scm.com/)
 * [MongoDB](https://www.mongodb.com/)
 
-
+## Recent Updates
+I have separated backend project in  [https://github.com/super-intern-dev/kanban-server.git]
 ## Common setup 
 
 Clone the repo and install the dependencies.
