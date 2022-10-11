@@ -1,4 +1,5 @@
 import { Header, Meta } from "@/components/organisms";
+import { onCheckAuthencated } from "@/utils/auth";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
 
@@ -15,15 +16,16 @@ type ILayoutProps = {
 const AuthLayout = (props: ILayoutProps) => {
   const router = useRouter();
 
-  const isAuthencated = () => {
-    return false;
+  const checkAuth = async () => {
+    const isAuthencated = await onCheckAuthencated();
+    if (!isAuthencated) {
+      router.push("/login");
+    }
   };
 
   useEffect(() => {
-    if (!isAuthencated()) {
-      router.push("/login");
-    }
-  }, [isAuthencated]);
+    checkAuth();
+  }, []);
 
   return (
     <div className="bg-white dark:bg-slate-800 h-screen	">

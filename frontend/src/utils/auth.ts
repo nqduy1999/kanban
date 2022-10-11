@@ -1,3 +1,4 @@
+import { verifyToken } from '@/services';
 import store from 'store';
 
 export const setAccessToken = (token: string) => {
@@ -19,4 +20,18 @@ export const setTheme = (currentTheme: string) => {
 
 export const getTheme = () => {
   return store.get('theme')
+}
+
+export const isAuthencated = async () => {
+  try {
+    await verifyToken();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+export const onCheckAuthencated = async () => {
+  const isAuth = await isAuthencated();
+  return isAuth
 }
