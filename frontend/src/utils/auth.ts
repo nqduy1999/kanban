@@ -24,8 +24,9 @@ export const getTheme = () => {
 
 export const isAuthencated = async () => {
   try {
-    await verifyToken();
-    return true;
+    const isAuth = await verifyToken();
+    if (isAuth) return true;
+    return null;
   } catch (error) {
     return false;
   }

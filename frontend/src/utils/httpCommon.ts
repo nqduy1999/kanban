@@ -8,8 +8,7 @@ import {
 import { JSONObject } from '@/types';
 import { IResponse } from '@/commons/constants/api-request';
 import { notify } from '@/components/atoms';
-
-
+import { isMobile } from "react-device-detect"
 
 export default class HttpCommon {
   static axiosInstance = axios.create({
@@ -19,8 +18,6 @@ export default class HttpCommon {
 
   static commonConfig = () => {
     const ACCESS_TOKEN = getAccessToken();
-    console.log(ACCESS_TOKEN, 'ACCESS_TOKEN');
-
     return {
       ...ACCESS_TOKEN ? { 'Authorization': 'Bearer ' + ACCESS_TOKEN } : {}
     };
@@ -39,12 +36,12 @@ export default class HttpCommon {
   });
 
   static responseHandler = async (resp: JSONObject, isNotify = true): Promise<JSONObject | Error> => {
-    if (resp?.err_code === 200) {
-      isNotify && notify('success', 'top-right', resp?.msg)
+    if (resp?.err_code === 200 || resp?.err_code === 201) {
+      isNotify && notify('success', isMobile ? "bottom-center" : 'top-right', resp?.msg)
       return resp;
     }
     else {
-      isNotify && notify('error', 'top-right', resp?.msg)
+      isNotify && notify('error', isMobile ? "bottom-center" : 'top-right', resp?.msg)
       throw new Error(JSON.stringify(resp))
     }
 
