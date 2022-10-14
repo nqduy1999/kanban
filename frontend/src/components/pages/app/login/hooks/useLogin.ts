@@ -9,9 +9,6 @@ export const useLogin = () => {
     onSuccess: (res) => {
       setAccessToken(res.data.token)
       router.push('/')
-    },
-    onError: (err) => {
-      console.log(err, 'err');
     }
   })
 }

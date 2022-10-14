@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 const ConfigComponent = () => {
   const { theme } = useTheme();
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
 
   const checkAuth = async () => {
     const isAuthencated = await onCheckAuthencated();
@@ -23,9 +22,9 @@ const ConfigComponent = () => {
     }
   }, []);
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) checkAuth();
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   return <></>;
 };

@@ -12,7 +12,8 @@ import { isMobile } from "react-device-detect"
 
 const err_network = new Map([
   ['timeout', 'timeout of 15000ms exceeded'],
-  ['network', 'Network Error']
+  ['network', 'Network Error'],
+  ['request', 'Server Error']
 ])
 
 export default class HttpCommon {
@@ -41,8 +42,6 @@ export default class HttpCommon {
   });
 
   static responseHandler = async (resp: JSONObject, isNotify = true): Promise<JSONObject | Error> => {
-    console.log(resp, ' resp');
-
     if (resp?.err_code === 200 || resp?.err_code === 201) {
       isNotify && notify('success', isMobile ? "bottom-center" : 'top-right', resp?.msg)
       return resp;
