@@ -55,7 +55,10 @@ export default class HttpCommon {
 
   static convertResponseError = (error: any, ctx: any, isNotify: boolean) => {
     const variable = error.message.toLowerCase().split(" ");
-    if (err_network.get(variable[0] as string)) {
+    // check is type of common error
+    const isCommonErr = !error?.response && err_network.get(variable[0] as string);
+    //
+    if (isCommonErr) {
       return ctx({
         err_code: 500,
         msg: err_network.get(variable[0] as string)
