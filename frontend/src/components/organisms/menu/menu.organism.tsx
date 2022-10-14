@@ -1,6 +1,7 @@
-import { Menu } from "@headlessui/react";
-import { MenuIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { LanguageToogle, ThemeToggler } from "@/components/molecules";
+import { Menu, Transition } from "@headlessui/react";
+import { CogIcon } from "@heroicons/react/solid";
+import { Fragment, useState } from "react";
 
 export default function MenuDropdownMobile() {
   const [showSideBar, setShowSideBar] = useState<boolean>(false);
@@ -11,20 +12,44 @@ export default function MenuDropdownMobile() {
           onClick={() => setShowSideBar(!showSideBar)}
           className="inline-flex w-full justify-center rounded-md px-4 py-2 text-sm font-medium "
         >
-          <MenuIcon
-            className="ml-2 -mr-1 h-5 w-5 text-white hover:text-violet-100"
+          <CogIcon
+            className="ml-2 -mr-1 h-5 w-5 dark:text-white icn-spinner"
             aria-hidden="true"
           />
         </Menu.Button>
-        <div
-          className={`top-0 right-0 w-full bg-blue-600 top-[4.25rem] p-10 pl-20 text-white fixed h-full z-40 ease-in-out duration-300 ${
-            showSideBar ? "translate-x-0 " : "translate-x-full"
-          }`}
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
         >
-          <h3 className="mt-20 text-4xl font-semibold text-white">
-            I am a sidebar
-          </h3>
-        </div>
+          <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-900 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="px-1 py-1 ">
+              <Menu.Item>
+                {() => (
+                  <button className="w-full">
+                    <LanguageToogle
+                      className="w-full h-12 rounded-lg flex items-center justify-center 
+                  hover:bg-gray-700 text-white transition-all duration-300 focus:outline-none"
+                    />
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {() => (
+                  <button className="w-full">
+                    <ThemeToggler className="w-full bg-transparent h-12 rounded-lg flex items-center justify-center hover:bg-gray-700 text-white dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none" />
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
       </Menu>
     </div>
   );

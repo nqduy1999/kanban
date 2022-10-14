@@ -2,6 +2,7 @@ import { Button } from "@/components/atoms";
 import { useRouter } from "next/router";
 import { image } from "@/commons/images";
 import Image from "next/image";
+import { FC } from "react";
 
 const languages: Record<string, any> = {
   vi: {
@@ -14,23 +15,32 @@ const languages: Record<string, any> = {
   },
 };
 
-const LanguageToogle = () => {
+interface ILanguageToggle {
+  className?: string;
+}
+
+const defaultProps = {
+  className:
+    "w-28 h-8 rounded flex flex-row space-x-1 items-center justify-start px-2 hover:ring-2 ring-blue-400 transition-all duration-300 focus:outline-none",
+};
+
+const LanguageToogle: FC<ILanguageToggle> = ({ className }) => {
   const { locale } = useRouter();
 
   return (
     <>
       <Button
-        className="w-28 h-8 bg-gray-50 rounded dark:bg-slate-800 flex flex-row space-x-1 items-center justify-start px-2 hover:ring-2 ring-blue-400 transition-all duration-300 focus:outline-none"
+        className={className as string}
         type="button"
         data-dropdown-toggle="language-dropdown-menu"
       >
         <Image
           src={languages[locale as string].flag}
-          className="w-5 h-5 rounded-full"
+          className="w-8 h-8 rounded-full"
           width="20"
           height="20"
         />
-        <span>{languages[locale as string].name}</span>
+        <p className="ml-2">{languages[locale as string].name}</p>
       </Button>
       {/* <div
         className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
@@ -55,4 +65,5 @@ const LanguageToogle = () => {
   );
 };
 
+LanguageToogle.defaultProps = defaultProps;
 export { LanguageToogle };

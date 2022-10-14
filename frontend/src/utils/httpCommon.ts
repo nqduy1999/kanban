@@ -10,6 +10,11 @@ import { IResponse } from '@/commons/constants/api-request';
 import { notify } from '@/components/atoms';
 import { isMobile } from "react-device-detect"
 
+const err_network = new Map([
+  ['timeout', 'timeout of 15000ms exceeded'],
+  ['network', 'Network Error']
+])
+
 export default class HttpCommon {
   static axiosInstance = axios.create({
     baseURL: process.env.BASE_URL,
@@ -36,6 +41,8 @@ export default class HttpCommon {
   });
 
   static responseHandler = async (resp: JSONObject, isNotify = true): Promise<JSONObject | Error> => {
+    console.log(resp, ' resp');
+
     if (resp?.err_code === 200 || resp?.err_code === 201) {
       isNotify && notify('success', isMobile ? "bottom-center" : 'top-right', resp?.msg)
       return resp;
@@ -47,6 +54,18 @@ export default class HttpCommon {
 
   };
 
+  static convertResponseError = (error: any, ctx: any, isNotify: boolean) => {
+    const variable = error.message.toLowerCase().split(" ");
+    if (err_network.get(variable[0] as string)) {
+      return ctx({
+        err_code: 500,
+        msg: err_network.get(variable[0] as string)
+      }, isNotify);
+    }
+    return ctx(error?.response && error?.response.data, isNotify)
+
+  }
+
   static Get = async (url: string, params?: any, isNotify?: boolean): Promise<JSONObject | Error | any> => {
     try {
       const result: IResponse = await this.axiosInstance.get(url, this.renderParamsGet(params));
@@ -54,11 +73,7 @@ export default class HttpCommon {
     }
     catch (error) {
       if (axios.isAxiosError(error)) {
-        if (error.message.includes('Network Error')) return this.responseHandler({
-          err_code: 500,
-          msg: 'Network error'
-        },)
-        return this.responseHandler(error?.response && error?.response.data, isNotify)
+        return this.convertResponseError(error as Error, this.responseHandler, isNotify as boolean)
       }
     }
   };
@@ -70,13 +85,8 @@ export default class HttpCommon {
       }), this.renderParamsPost());
       return this.responseHandler(_.get(result, 'data', {}), isNotify);
     } catch (error) {
-
       if (axios.isAxiosError(error)) {
-        if (error.message.includes('Network Error')) return this.responseHandler({
-          err_code: 500,
-          msg: 'Network error'
-        }, isNotify)
-        return this.responseHandler(error?.response && error?.response.data, isNotify)
+        return this.convertResponseError(error as Error, this.responseHandler, isNotify as boolean)
       }
     }
   };
