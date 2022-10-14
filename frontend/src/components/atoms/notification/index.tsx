@@ -8,6 +8,7 @@ interface IMessage {
   t: any;
   type: ToastType;
   title?: string;
+  position?: ToastPosition;
 }
 
 const renderIcon = (type: ToastType) => {
@@ -22,14 +23,26 @@ const renderIcon = (type: ToastType) => {
       return <LightningBoltIcon className="text-white w-5 h-5" />;
   }
 };
+
+const renderPosition = (visible: boolean, position: ToastPosition) => {
+  switch (position) {
+    case "bottom-center":
+      return visible ? "bottom-0" : "-bottom-96";
+    case "top-center":
+      return visible ? "top-0" : "-top-96";
+    default:
+      return visible ? "top-0" : "-top-96";
+  }
+};
+
 const SampleMessage = (props: IMessage) => {
-  const { t, type, title } = props;
+  const { t, type, title, position } = props;
   return (
     <div
       className={classNames([
         "notificationWrapper",
         type ? `notificationWrapper-default` : `notificationWrapper-${type}`,
-        t.visible ? "top-0" : "-top-96",
+        renderPosition(t.visible, position as ToastPosition),
       ])}
     >
       <div className="iconWrapper">{renderIcon(type)}</div>
@@ -50,10 +63,17 @@ export const notify = (
   title?: string
 ) =>
   toast.custom(
-    (t) => <SampleMessage type={type as ToastType} t={t} title={title} />,
+    (t) => (
+      <SampleMessage
+        type={type as ToastType}
+        t={t}
+        title={title}
+        position={position}
+      />
+    ),
     {
       id: "unique-notification",
       position: position,
-      duration: 1500,
+      duration: 2000,
     }
   );
