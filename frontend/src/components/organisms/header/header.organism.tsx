@@ -4,7 +4,7 @@ import MenuDropdownMobile from "../menu/menu.organism";
 
 const Header = () => {
   return (
-    <nav className="px-2 p-4 bg-gray-200 border-gray-200  dark:shadow-none dark:bg-gray-900 dark:border-gray-700">
+    <nav className="px-2 p-4 bg-gray-200 border-gray-200  dark:shadow-none dark:bg-gray-800 dark:border-gray-700">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <a href="#" className="flex items-center">
           <HomeIcon className="mr-4" />

@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider enableSystem={true} attribute="class">
         <ConfigComponent />
         <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools position="top-left" initialIsOpen={false} />
       </ThemeProvider>
     </QueryClientProvider>
   );

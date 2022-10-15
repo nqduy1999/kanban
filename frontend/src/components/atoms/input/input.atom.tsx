@@ -11,26 +11,28 @@ export interface IInput {
   value?: string | number;
   suffix?: ReactNode;
   prefix?: ReactNode;
+  wrapperClassName?: string;
 }
 
-const Input: FC<IInput> = ({ suffix, prefix, className, type, ...rest }) => {
+const Input: FC<IInput> = ({
+  suffix,
+  prefix,
+  className,
+  wrapperClassName,
+  type,
+  ...rest
+}) => {
   return (
-    <div className={className + " flex"}>
+    <div className={wrapperClassName + " flex"}>
       {prefix}
-      <input
-        className="w-full bg-transparent focus:outline-none"
-        type={type}
-        aria-label={type}
-        {...rest}
-      />
+      <input className={className} type={type} aria-label={type} {...rest} />
       {suffix}
     </div>
   );
 };
 
 Input.defaultProps = {
-  className:
-    "border rounded-lg py-3 px-3 bg-gray-700 border-gray-700 placeholder-gray-500",
+  className: "w-full bg-transparent focus:outline-none",
   type: "text",
 };
 export { Input };
