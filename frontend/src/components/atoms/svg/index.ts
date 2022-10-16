@@ -1,2 +1,6 @@
 export * from './backgroundLight'
 export * from './iconLoading'
+export * from './iconAdd'
+export * from './iconMenu'
+export * from './iconNotification'
+export * from './iconSearch'
