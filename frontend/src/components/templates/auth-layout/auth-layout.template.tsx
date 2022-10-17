@@ -1,4 +1,6 @@
 import { Header, Meta, NavbarMobile } from "@/components/organisms";
+import { useAppDispatch } from "@/hooks/useRedux";
+import { getUserAction } from "@/redux/auth/auth.action";
 import React, { ReactNode } from "react";
 import { isMobile } from "react-device-detect";
 
@@ -14,8 +16,10 @@ type ILayoutProps = {
 
 const AuthLayout = (props: ILayoutProps) => {
   const [mounted, setMounted] = React.useState(false);
+  const dispatch = useAppDispatch();
 
   React.useEffect(() => {
+    dispatch(getUserAction());
     setMounted(true);
   }, []);
 
