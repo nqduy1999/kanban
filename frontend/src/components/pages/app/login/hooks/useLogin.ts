@@ -1,5 +1,5 @@
 import { postLogin } from "@/services";
-import { setAccessToken } from "@/utils/auth";
+import { setAccessToken, setAuth } from "@/utils/auth";
 import { useRouter } from "next/router";
 import { useMutation } from "react-query"
 
@@ -7,7 +7,8 @@ export const useLogin = () => {
   const router = useRouter();
   return useMutation(postLogin, {
     onSuccess: (res) => {
-      setAccessToken(res.data.token)
+      setAccessToken(res.data.token);
+      setAuth(true);
       router.push('/')
     }
   })
