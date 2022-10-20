@@ -41,7 +41,7 @@ export default class HttpCommon {
     headers: { ...this.commonConfig() },
   });
 
-  static responseHandler = async (resp: JSONObject, isNotify = true): Promise<JSONObject | Error> => {
+  static responseHandler = async (resp: JSONObject, isNotify = true): Promise<JSONObject | Error | void> => {
     if (resp?.err_code === 200 || resp?.err_code === 201) {
       isNotify && notify('success', isMobile ? "bottom-center" : 'top-right', resp?.msg)
       return resp;

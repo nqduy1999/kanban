@@ -3,6 +3,7 @@ import {
   Button,
   MenuIcon,
   NotificationIcon,
+  ProfileIcon,
   SearchIcon,
 } from "@/components/atoms";
 import { useRouter } from "next/router";
@@ -23,15 +24,21 @@ const sideBarItems = [
     ),
   },
   {
+    path: "create-note",
+    renderIcon: (isActive: boolean) => (
+      <AddIcon className="h-9 w-full" isActive={isActive} />
+    ),
+  },
+  {
     path: "notification",
     renderIcon: (isActive: boolean) => (
       <NotificationIcon className="h-6 w-6" isActive={isActive} />
     ),
   },
   {
-    path: "add-new",
+    path: "profile",
     renderIcon: (isActive: boolean) => (
-      <AddIcon className="h-6 w-6" isActive={isActive} />
+      <ProfileIcon className="h-6 w-6" isActive={isActive} />
     ),
   },
 ];
@@ -50,11 +57,15 @@ const NavbarMobile = () => {
   }, [router]);
 
   return (
-    <div className="fixed dark:bg-gray-800 bg-gray-200 w-full h-12 bottom-0 rounded-t-2xl">
+    <div className="fixed dark:bg-gray-800 bg-white w-full h-12 bottom-0 rounded-t-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
       <div className="flex w-full justify-between	items-center p-3 px-8">
         {sideBarItems.map((item, index) => (
           <Button
-            className="w-6 h-6"
+            className={
+              index !== 2
+                ? "w-6 h-6"
+                : "w-16 h-16 dark:bg-gray-800 bg-white -mt-10 rounded-t-full	flex items-center content-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] "
+            }
             key={item.path}
             onClick={() => setActiveIndex(index)}
           >
