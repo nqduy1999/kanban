@@ -20,7 +20,7 @@ const sideBarItems = [
   {
     path: "search",
     renderIcon: (isActive: boolean) => (
-      <SearchIcon className="h-6 w-6" isActive={isActive} />
+      <SearchIcon className={`h-6 w-6 dark: ${isActive ? "text-[#3865E0]" : ""}`} />
     ),
   },
   {
@@ -57,14 +57,14 @@ const NavbarMobile = () => {
   }, [router]);
 
   return (
-    <div className="fixed dark:bg-gray-800 bg-white w-full h-12 bottom-0 rounded-t-2xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+    <div className="fixed dark:bg-gray-800 bg-white w-full h-12 bottom-0 rounded-t-2xl border-t-2 dark:border-t-0	">
       <div className="flex w-full justify-between	items-center p-3 px-8">
         {sideBarItems.map((item, index) => (
           <Button
             className={
               index !== 2
                 ? "w-6 h-6"
-                : "w-16 h-16 dark:bg-gray-800 bg-white -mt-10 rounded-t-full	flex items-center content-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] "
+                : "w-16 h-16 dark:bg-gray-800 bg-white -mt-10 rounded-t-full	flex items-center content-center border-t-2	dark:border-t-0	"
             }
             key={item.path}
             onClick={() => setActiveIndex(index)}

@@ -11,7 +11,7 @@ import { notify } from '@/components/atoms';
 import { isMobile } from "react-device-detect"
 
 const err_network = new Map([
-  ['timeout', 'timeout of 15000ms exceeded'],
+  ['timeout', 'Request timeout'],
   ['network', 'Network Error'],
   ['request', 'Server Error']
 ])
