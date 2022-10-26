@@ -10,7 +10,7 @@ export function MenuIcon({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       viewBox="0 0 20 20"
-      fill={isActive ? "#3865E0" : "white"}
+      fill={isActive ? "#3865E0" : "rgb(229 231 235)"}
     >
       <path
         fillRule="evenodd"
